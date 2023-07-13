@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux";
 import { deleteTodo } from "../../redux/asyncReducers";
@@ -26,11 +26,11 @@ const Todo: FC<PropsType> = (props) => {
     dispatch(onStatusChange(props.id));
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const submit = (e) => {
+  const submit = (e: FormEvent) => {
     e.preventDefault();
     dispatch(onEditTodo({ id: props.id, inputValue }));
     setEdit(false);
